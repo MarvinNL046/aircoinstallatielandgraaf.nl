@@ -4,7 +4,7 @@ import { Star } from "lucide-react"
 const testimonials = [
   {
     name: "Peter van der Berg",
-    location: "Maastricht",
+    location: "Landgraaf",
     text: "Uitstekende service! De installatie was snel en netjes uitgevoerd. Zeer tevreden met het resultaat.",
     rating: 5
   },

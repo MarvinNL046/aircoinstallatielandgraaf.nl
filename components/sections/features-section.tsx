@@ -39,7 +39,7 @@ export function FeaturesSection() {
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-blue-600 font-semibold">Waarom Kiezen voor Ons?</span>
           <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            De Airco Specialist van Limburg
+            De Airco Specialist van Landgraaf
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Al meer dan 10 jaar specialist in airconditioning voor woningen en bedrijven.
