@@ -91,7 +91,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  openGraph: {
+    openGraph: {
     type: 'website',
     locale: 'nl_NL',
     url: '/',
