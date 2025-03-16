@@ -130,7 +130,7 @@ export const metadata = {
     },
   },
   verification: {
-    google: 'TLya2mlO2DdLM9RyC_Qm6WKEHbz2sTrnOxywNFib_4s',
+    google: 'VqmFL-unI3_O0s0gZt3xlHbtr1BhNTCdBj9lTzZK-p4',
     yandex: 'verification_token',
     yahoo: 'verification_token',
   }
