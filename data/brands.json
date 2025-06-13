@@ -4,6 +4,7 @@
       "name": "Daikin",
       "slug": "daikin",
       "description": "Daikin staat bekend om zijn innovatieve technologie en hoge kwaliteit airconditioners.",
+      "image": "/images/brands/products/daikin-stylish-wit.webp",
       "features": [
         "Zeer energiezuinig met hoge SEER-waarden",
         "Geavanceerde luchtfiltering",
@@ -15,6 +16,7 @@
       "name": "Mitsubishi Electric",
       "slug": "mitsubishi-electric",
       "description": "Mitsubishi Electric is synoniem met betrouwbaarheid en duurzaamheid.",
+      "image": "/images/brands/products/Mitsubishi heavy indus/Mitsubishi-titanium-zs-wft-1.webp",
       "features": [
         "Plasma Quad Plus filtersysteem",
         "Hyper Heating technologie",
@@ -26,6 +28,7 @@
       "name": "Samsung",
       "slug": "samsung",
       "description": "Samsung combineert stijlvol design met slimme technologie.",
+      "image": "/images/brands/products/samsung/windfreeElite/WindFree Elite_S2_Front_Web_RGB.webp",
       "features": [
         "WindFree technologie",
         "AI Auto Comfort",
@@ -37,6 +40,7 @@
       "name": "Toshiba",
       "slug": "toshiba",
       "description": "Toshiba staat bekend om zijn betrouwbare en innovatieve airconditioners met geavanceerde technologie.",
+      "image": "/images/brands/products/Daiseikai 10-Wit-vooraanzicht_4_11zon.webp",
       "features": [
         "HADA Care luchtstroom",
         "Ultra HD filtratie",
@@ -48,6 +52,7 @@
       "name": "Mitsubishi Heavy Industries",
       "slug": "mitsubishi-heavy",
       "description": "Mitsubishi Heavy Industries levert robuuste en efficiënte airconditioners met superieure prestaties.",
+      "image": "/images/brands/products/Mitsubishi heavy indus/srk50zs-wf-wit-single-split-airco-wandmodel-2.5-3.5-5kw-1.webp",
       "features": [
         "Silent Operation technologie",
         "Allergen Clear systeem",
@@ -59,6 +64,7 @@
       "name": "LG",
       "slug": "lg",
       "description": "LG biedt innovatieve airconditioners met geavanceerde technologieën voor optimaal comfort.",
+      "image": "/images/brands/products/LG-dualcool-indoor-premium.webp",
       "features": [
         "Dual Inverter Compressor",
         "ThinQ smart control",
@@ -70,6 +76,7 @@
       "name": "Tosot",
       "slug": "tosot",
       "description": "Tosot levert betrouwbare airconditioners met een uitstekende prijs-kwaliteitverhouding.",
+      "image": "/images/brands/products/724-clivia-wit-vooraanzicht.webp",
       "features": [
         "I-Feel temperatuurregeling",
         "Ultra-stil ontwerp",
@@ -81,6 +88,7 @@
       "name": "Gree",
       "slug": "gree",
       "description": "Gree is wereldwijd marktleider in airconditioning met focus op innovatie en kwaliteit.",
+      "image": "/images/brands/products/710-clivia-zwart-zijkant.webp",
       "features": [
         "G-Tech Inverter technologie",
         "Self-clean functie",

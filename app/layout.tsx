@@ -1,14 +1,21 @@
-import { Inter } from "next/font/google"
+import { Inter, Poppins } from "next/font/google"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { Toaster } from "@/components/ui/sonner"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
+const poppins = Poppins({ 
+  subsets: ["latin"],
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-poppins',
+})
+
 const inter = Inter({ 
   subsets: ["latin"],
   display: 'swap',
-  preload: true,
+  variable: '--font-inter',
 })
 
 export const metadata = {
@@ -149,7 +156,7 @@ export default function RootLayout({
     >
       <head />
       <body 
-        className={`${inter.className} min-h-screen flex flex-col`}
+        className={`${poppins.variable} ${inter.variable} font-sans min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
         <ThemeProvider

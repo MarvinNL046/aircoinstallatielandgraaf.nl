@@ -1,5 +1,5 @@
 import { Metadata } from "next"
-import { CityContent } from "@/components/city/city-content"
+import { EnhancedCityContent } from "@/components/city/enhanced-city-content"
 import { getCities } from "@/lib/cities"
 import { generateLocalBusinessSchema } from "@/lib/schema"
 import Script from "next/script"
@@ -56,11 +56,17 @@ export default async function CityPage({ params }: CityPageProps) {
   const localBusinessSchema = generateLocalBusinessSchema(cityData.city)
 
   // Enhanced description for all cities
-  let description = `Professionele airconditioning services in ${cityData.city} door StayCool Airco. Wij bieden complete airco-oplossingen voor zowel particulieren als bedrijven.`
+  let description = `Professionele airconditioning services in ${cityData.city} door StayCool Airco. Wij bieden complete airco-oplossingen voor zowel particulieren als bedrijven. ✓ Erkend installateur ✓ 5 jaar garantie ✓ Binnen 24 uur reactie.`
   
-  // Add more detailed content for Maastricht
-  if (cityData.city.toLowerCase() === 'maastricht') {
+  // Add more detailed content for specific cities
+  if (cityData.city.toLowerCase() === 'landgraaf') {
+    description = `Dé airco specialist van Landgraaf! StayCool Airco installeert al jaren airconditioners in Landgraaf, van Schaesberg tot Nieuwenhagen. Onze monteurs kennen de lokale situatie en leveren maatwerk voor uw woning of bedrijf. Met meer dan 120 installaties in Landgraaf zijn wij uw vertrouwde partner voor koeling én verwarming.`
+  } else if (cityData.city.toLowerCase() === 'maastricht') {
     description = `Professionele airconditioning installatie in Maastricht door StayCool Airco. Als lokale specialist bieden wij complete airco-oplossingen voor woningen en bedrijven in Maastricht en omgeving. Onze ervaren monteurs kennen de stad en haar gebouwen goed en zorgen voor een perfecte installatie. Bekijk ook onze <a href="https://staycoolairco.nl/kennisbank/airco-maastricht" class="text-blue-600 hover:underline">kennisbank over airco's in Maastricht</a>.`
+  } else if (cityData.city.toLowerCase() === 'heerlen') {
+    description = `Airco installatie Heerlen door erkend installateur StayCool. Van het centrum tot Hoensbroek, wij installeren airconditioners door heel Heerlen. Profiteer van onze lokale kennis en snelle service. Al meer dan 180 tevreden klanten in Heerlen!`
+  } else if (cityData.city.toLowerCase() === 'sittard') {
+    description = `Uw airco specialist in Sittard-Geleen! StayCool Airco verzorgt professionele installaties in heel Sittard. Van split-units tot complete klimaatsystemen. Lokale service met landelijke kwaliteit. Vraag nu uw offerte aan!`
   }
 
   const city = {
@@ -78,7 +84,7 @@ export default async function CityPage({ params }: CityPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
-      <CityContent city={city} />
+      <EnhancedCityContent city={city} />
     </>
   )
 }

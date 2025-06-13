@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap>
-    <loc>https://aircoinstallatielandgraaf.nl/sitemap-main.xml</loc>
-    <lastmod>2025-03-16</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://aircoinstallatielandgraaf.nl/sitemap-services.xml</loc>
-    <lastmod>2025-03-16</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://aircoinstallatielandgraaf.nl/sitemap-locations.xml</loc>
-    <lastmod>2025-03-16</lastmod>
-  </sitemap>
+<sitemap><loc>https://aircoinstallatielandgraaf.nl/sitemap-0.xml</loc></sitemap>
+<sitemap><loc>https://aircoinstallatielandgraaf.nl/sitemap-locations.xml</loc></sitemap>
+<sitemap><loc>https://aircoinstallatielandgraaf.nl/sitemap-services.xml</loc></sitemap>
 </sitemapindex>
