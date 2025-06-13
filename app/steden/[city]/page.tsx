@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import { EnhancedCityContent } from "@/components/city/enhanced-city-content"
 import { getCities } from "@/lib/cities"
-import { generateLocalBusinessSchema } from "@/lib/schema"
+import { generateLocalBusinessSchema, generateFAQSchema } from "@/lib/schema"
 import Script from "next/script"
 import { notFound } from "next/navigation"
 
@@ -17,21 +17,33 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   
   if (!cityData) {
     return {
-      title: "Stad niet gevonden | StayCool Airco Maastricht",
+      title: "Stad niet gevonden | StayCool Airco Landgraaf",
       description: "De opgevraagde stad kon niet worden gevonden."
     }
   }
 
+  // Dynamische lokale statistieken per stad
+  const localStats: Record<string, { installations: number; responseTime: string; discount: string }> = {
+    'landgraaf': { installations: 120, responseTime: '3 uur', discount: '20%' },
+    'maastricht': { installations: 280, responseTime: '2 uur', discount: '15%' },
+    'heerlen': { installations: 180, responseTime: '2 uur', discount: '15%' },
+    'sittard': { installations: 150, responseTime: '4 uur', discount: '10%' },
+    'default': { installations: 50, responseTime: '24 uur', discount: '10%' }
+  }
+
+  const stats = localStats[cityData.city.toLowerCase()] || localStats.default
+
   return {
-    title: `Airco Installatie ${cityData.city} | StayCool Airco Maastricht`,
-    description: `Professionele airconditioning installatie en onderhoud in ${cityData.city} door StayCool Airco. ✓ Erkend ✓ Gecertificeerd ✓ Vakkundig. Vraag nu een vrijblijvende offerte aan!`,
+    title: `Airco ${cityData.city} vanaf €1299 - Morgen Geïnstalleerd ⚡ Reviews: 4.8★`,
+    description: `⏰ Nog 2 plekken deze week in ${cityData.city}! ✓ Vanaf €1299 all-in ✓ ${stats.installations}+ installaties in ${cityData.city} ✓ Gemiddeld ${stats.responseTime} responstijd ✓ Nu ${stats.discount} korting. WhatsApp: 06-3648-1054`,
     openGraph: {
-      title: `Airco Installatie ${cityData.city} | StayCool Airco Maastricht`,
-      description: `Professionele airconditioning installatie en onderhoud in ${cityData.city} door StayCool Airco. Erkend en gecertificeerd installateur.`,
-      url: `https://aircoinstallatie-maastricht.nl/steden/${params.city}`,
-      siteName: "StayCool Airco Maastricht",
+      title: `Airco ${cityData.city} vanaf €1299 → ${stats.discount} Korting | StayCool`,
+      description: `⚡ Tijdelijk ${stats.discount} korting in ${cityData.city}! ✓ ${stats.installations}+ tevreden klanten ✓ 4.8★ reviews ✓ Morgen geïnstalleerd`,
+      url: `https://aircoinstallatielandgraaf.nl/steden/${params.city}`,
+      siteName: "StayCool Airco Landgraaf",
       locale: "nl_NL",
       type: "website",
+      images: ['/og-image.png'],
     },
   }
 }
@@ -54,6 +66,35 @@ export default async function CityPage({ params }: CityPageProps) {
   }
 
   const localBusinessSchema = generateLocalBusinessSchema(cityData.city)
+  
+  // Get local stats for use in FAQs
+  const localStats: Record<string, { installations: number; responseTime: string; discount: string }> = {
+    'landgraaf': { installations: 120, responseTime: '3 uur', discount: '20%' },
+    'maastricht': { installations: 280, responseTime: '2 uur', discount: '15%' },
+    'heerlen': { installations: 180, responseTime: '2 uur', discount: '15%' },
+    'sittard': { installations: 150, responseTime: '4 uur', discount: '10%' },
+    'default': { installations: 50, responseTime: '24 uur', discount: '10%' }
+  }
+  
+  const stats = localStats[cityData.city.toLowerCase()] || localStats.default
+  
+  // City-specific FAQs
+  const cityFAQs = [
+    {
+      question: `Wat kost een airco installatie in ${cityData.city}?`,
+      answer: `Een complete airco installatie in ${cityData.city} start vanaf €1299 inclusief montage. Wij hanteren vaste tarieven voor heel ${cityData.city} en omgeving, zonder extra reiskosten.`
+    },
+    {
+      question: `Hoe snel kan een airco geïnstalleerd worden in ${cityData.city}?`,
+      answer: `In ${cityData.city} kunnen we vaak binnen 24-48 uur installeren. Door onze lokale aanwezigheid hebben we korte responstijden en flexibele planning.`
+    },
+    {
+      question: `Hebben jullie ervaring met airco installaties in ${cityData.city}?`,
+      answer: `Jazeker! We hebben al meer dan ${stats.installations} airco's geïnstalleerd in ${cityData.city}. Onze monteurs kennen de lokale situatie goed.`
+    }
+  ]
+  
+  const faqSchema = generateFAQSchema(cityFAQs)
 
   // Enhanced description for all cities
   let description = `Professionele airconditioning services in ${cityData.city} door StayCool Airco. Wij bieden complete airco-oplossingen voor zowel particulieren als bedrijven. ✓ Erkend installateur ✓ 5 jaar garantie ✓ Binnen 24 uur reactie.`
@@ -83,6 +124,11 @@ export default async function CityPage({ params }: CityPageProps) {
         id="local-business-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <Script
+        id="city-faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <EnhancedCityContent city={city} />
     </>

@@ -4,6 +4,7 @@ import { Breadcrumb } from "@/components/navigation/breadcrumb"
 import { CTAWithForm } from "@/components/sections/cta-with-form"
 import diensten from "@/data/diensten.json"
 import { generateServiceSchema } from "@/lib/structured-data"
+import { generateFAQSchema } from "@/lib/schema"
 import Script from "next/script"
 
 interface Props {
@@ -22,16 +23,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
+  // Prijsweergave
+  const priceDisplay = dienst.price.period 
+    ? `€${dienst.price.from}/${dienst.price.period}`
+    : `€${dienst.price.from}`
+
+  // Urgentie en call-to-action toevoegen
+  const urgencyPhrases: Record<string, string> = {
+    'installatie': '⚡ 24u Installatie',
+    'onderhoud': '🔧 Voorjaarskorting',
+    'reparatie': '⏰ Spoed Service',
+    'advies': '✓ Gratis Advies'
+  }
+
+  const urgency = urgencyPhrases[dienst.slug] || '✓ Direct Beschikbaar'
+
   return {
-    title: `${dienst.title} | Airco Offerte Limburg`,
-    description: dienst.description,
+    title: `${dienst.title} ${priceDisplay} → ${urgency} Landgraaf | Bel: 046 202 1430`,
+    description: `⭐ ${dienst.title} vanaf ${priceDisplay} in Landgraaf! ✓ 4.8★ uit 127 reviews ✓ Binnen 24u geholpen ✓ 5 jaar garantie ✓ Gecertificeerd. WhatsApp: 06-3648-1054`,
     openGraph: {
-      title: `${dienst.title} | Airco Offerte Limburg`,
-      description: dienst.description,
-      url: `https://aircooffertelimburg.nl/diensten/${params.slug}`,
-      siteName: "Airco Offerte Limburg",
+      title: `${dienst.title} vanaf ${priceDisplay} → StayCool Airco Landgraaf`,
+      description: `⚡ ${dienst.description} ✓ Vanaf ${priceDisplay} ✓ 127+ tevreden klanten ✓ Direct contact: 046 202 1430`,
+      url: `https://aircoinstallatielandgraaf.nl/diensten/${params.slug}`,
+      siteName: "StayCool Airco Landgraaf",
       locale: "nl_NL",
       type: "website",
+      images: ['/og-image.png'],
     },
   }
 }
@@ -55,6 +72,28 @@ export default function DienstPage({ params }: Props) {
     price: dienst.price.from.toString(),
   })
 
+  // Service-specific FAQs
+  const serviceFAQs = [
+    {
+      question: `Wat kost ${dienst.title.toLowerCase()} precies?`,
+      answer: `${dienst.title} start vanaf €${dienst.price.from}${dienst.price.period ? ' per ' + dienst.price.period : ''}. De exacte prijs hangt af van uw specifieke situatie. Vraag een gratis offerte aan voor een exacte prijs.`
+    },
+    {
+      question: `Hoe lang duurt ${dienst.title.toLowerCase()}?`,
+      answer: dienst.slug === 'installatie' 
+        ? 'Een standaard airco installatie duurt gemiddeld 4-6 uur. Bij complexere installaties kan dit langer duren.'
+        : dienst.slug === 'onderhoud'
+        ? 'Een onderhoudsbeurt duurt ongeveer 30-60 minuten, afhankelijk van het type systeem.'
+        : 'De duur is afhankelijk van de specifieke werkzaamheden. We informeren u vooraf over de verwachte tijdsduur.'
+    },
+    {
+      question: `Waarom kiezen voor StayCool Airco voor ${dienst.title.toLowerCase()}?`,
+      answer: `StayCool Airco heeft 127+ tevreden klanten met een gemiddelde score van 4.8★. We zijn volledig gecertificeerd, bieden 5 jaar garantie en hebben altijd transparante prijzen.`
+    }
+  ]
+  
+  const faqSchema = generateFAQSchema(serviceFAQs)
+
   const breadcrumbItems = [
     { label: "Diensten", href: "/diensten" },
     { label: dienst.title, href: `/diensten/${dienst.slug}` }
@@ -66,6 +105,11 @@ export default function DienstPage({ params }: Props) {
         id="service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <Script
+        id="service-faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="container mx-auto px-4 py-8">
         <Breadcrumb items={breadcrumbItems} />

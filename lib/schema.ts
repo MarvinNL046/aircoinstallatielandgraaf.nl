@@ -1,4 +1,4 @@
-import { Organization, WithContext, Service, LocalBusiness, BreadcrumbList } from "schema-dts"
+import { Organization, WithContext, Service, LocalBusiness, BreadcrumbList, FAQPage, Question, AggregateRating, Product } from "schema-dts"
 
 export function generateOrganizationSchema(): WithContext<Organization> {
   return {
@@ -97,5 +97,124 @@ export function generateBreadcrumbSchema(items: { name: string; item: string }[]
       name: item.name,
       item: `https://aircoinstallatielandgraaf.nl${item.item}`,
     })),
+  }
+}
+
+export function generateFAQSchema(faqs: { question: string; answer: string }[]): WithContext<FAQPage> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(faq => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    } as Question))
+  }
+}
+
+export function generateAggregateRatingSchema(): AggregateRating {
+  return {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: 127,
+    bestRating: "5",
+    worstRating: "1"
+  }
+}
+
+export function generateEnhancedOrganizationSchema(): WithContext<Organization> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "StayCool Airco Landgraaf",
+    url: "https://aircoinstallatielandgraaf.nl",
+    logo: "https://staycoolairco.nl/logo.png",
+    description: "Professionele airconditioning installatie in Landgraaf door StayCool Airco",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Landgraaf",
+      addressRegion: "Limburg",
+      addressCountry: "NL",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+31-46-202-1430",
+      contactType: "customer service",
+    },
+    sameAs: [
+      "https://staycoolairco.nl",
+      "https://facebook.com/staycoolairco",
+      "https://instagram.com/staycoolairco",
+      "https://linkedin.com/company/staycoolairco",
+    ],
+    areaServed: {
+      "@type": "City",
+      name: "Landgraaf",
+    },
+    aggregateRating: generateAggregateRatingSchema(),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Airconditioning Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Airco Installatie",
+            description: "Complete airco installatie inclusief montage"
+          },
+          price: "1299",
+          priceCurrency: "EUR",
+          priceSpecification: {
+            "@type": "PriceSpecification",
+            minPrice: "1299",
+            maxPrice: "3500",
+            priceCurrency: "EUR"
+          },
+          availability: "https://schema.org/InStock",
+          validFrom: new Date().toISOString(),
+          validThrough: new Date(Date.now() + 30*24*60*60*1000).toISOString(),
+          seller: {
+            "@type": "Organization",
+            name: "StayCool Airco Landgraaf"
+          }
+        }
+      ]
+    }
+  }
+}
+
+export function generateProductSchema(product: {
+  name: string;
+  description: string;
+  price: string;
+  brand: string;
+  model?: string;
+}): WithContext<Product> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    brand: {
+      "@type": "Brand",
+      name: product.brand
+    },
+    model: product.model,
+    offers: {
+      "@type": "Offer",
+      price: product.price,
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      seller: {
+        "@type": "Organization",
+        name: "StayCool Airco Landgraaf"
+      },
+      priceValidUntil: new Date(Date.now() + 30*24*60*60*1000).toISOString()
+    },
+    aggregateRating: generateAggregateRatingSchema()
   }
 }
