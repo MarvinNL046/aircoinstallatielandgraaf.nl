@@ -62,7 +62,7 @@ export function HeroSection() {
               role="list"
               aria-label="Voordelen"
             >
-              {["5 jaar garantie", "24/7 service", "Gratis advies"].map((item) => (
+              {["5 jaar garantie", "Service tijdens kantooruren", "Gratis advies"].map((item) => (
                 <div 
                   key={item} 
                   className="flex items-center gap-2"

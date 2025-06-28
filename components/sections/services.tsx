@@ -15,7 +15,7 @@ const services = [
       "Gratis inspectie ter plaatse",
       "5 jaar garantie",
       "Inclusief montage",
-      "24/7 service",
+      "Service tijdens kantooruren",
     ],
     link: "/diensten/installatie",
   },

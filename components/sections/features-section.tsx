@@ -21,7 +21,7 @@ const features = [
   {
     icon: Wrench,
     title: "Onderhoud & Service",
-    description: "Regelmatig onderhoud en 24/7 service bij storingen.",
+    description: "Regelmatig onderhoud en service bij storingen tijdens kantooruren.",
     link: "/diensten/onderhoud",
   },
   {

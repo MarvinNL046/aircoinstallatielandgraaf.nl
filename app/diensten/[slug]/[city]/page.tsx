@@ -4,7 +4,6 @@ import Script from "next/script"
 import { Breadcrumb } from "@/components/navigation/breadcrumb"
 import { CTAWithForm } from "@/components/sections/cta-with-form"
 import diensten from "@/data/diensten.json"
-import citiesData from "@/data/steden.json"
 import { generateServiceSchema, generateLocalBusinessSchema, generateBreadcrumbSchema } from "@/lib/schema"
 
 interface Props {
@@ -15,16 +14,25 @@ interface Props {
 }
 
 export function generateStaticParams() {
-  const allCities = citiesData.limburg.reduce((acc: string[], municipality) => {
-    return [...acc, ...municipality.places.map(place => place.toLowerCase())]
-  }, [])
+  // Only generate pages for main cities to avoid Google penalties
+  const mainCities = [
+    'landgraaf',
+    'heerlen',
+    'kerkrade',
+    'maastricht',
+    'sittard-geleen',
+    'brunssum',
+    'venlo',
+    'roermond',
+    'weert'
+  ]
 
   const paths = []
   for (const dienst of diensten) {
-    for (const city of allCities) {
+    for (const city of mainCities) {
       paths.push({
         slug: dienst.slug,
-        city: city.toLowerCase(),
+        city: city,
       })
     }
   }
@@ -37,8 +45,8 @@ export function generateMetadata({ params }: Props): Metadata {
   
   if (!dienst) return {}
 
-  const title = `${dienst.title} in ${cityName} | Airco Offerte Limburg`
-  const description = `Professionele ${dienst.title.toLowerCase()} in ${cityName}. ✓ Erkend ✓ Gecertificeerd ✓ Vakkundig. ${dienst.description}`
+  const title = `${dienst.title} ${cityName} €${dienst.price.from} ⚡ Direct Contact`
+  const description = `✓ ${dienst.title} in ${cityName} ✓ Vanaf €${dienst.price.from} ✓ Erkend installateur ✓ Direct beschikbaar. Bel: 046-202-1430`
 
   return {
     title,
@@ -91,7 +99,7 @@ export function generateMetadata({ params }: Props): Metadata {
       "Airco voor slaapkamer Limburg",
       "Airco voor kantoor Limburg",
       "Airco onderhoud contract Limburg",
-      "24/7 airco service Limburg",
+      "Airco service tijdens kantooruren Limburg",
       "Airco met warmtepompfunctie Limburg"
     ]
   }

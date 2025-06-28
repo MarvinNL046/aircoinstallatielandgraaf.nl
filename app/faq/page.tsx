@@ -9,8 +9,8 @@ import { Breadcrumb } from "@/components/navigation/breadcrumb"
 import { CTAWithForm } from "@/components/sections/cta-with-form"
 
 export const metadata: Metadata = {
-  title: "Veelgestelde Vragen | Airco Offerte Limburg",
-  description: "Vind antwoorden op veelgestelde vragen over airconditioning, installatie, onderhoud en meer.",
+  title: "FAQ Airco | Prijzen & Info | StayCool ❓",
+  description: "✓ Wat kost een airco? ✓ Installatie info ✓ Onderhoud tips ✓ Direct antwoord op al uw vragen. Bel: 046-202-1430",
 }
 
 const faqs = [

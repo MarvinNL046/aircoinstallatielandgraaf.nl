@@ -11,7 +11,7 @@ export function WaaromStaycool() {
         <li>Meer dan 10 jaar ervaring in Maastricht en omgeving</li>
         <li>Gecertificeerde monteurs met kennis van alle topmerken</li>
         <li>5 jaar garantie op installatie</li>
-        <li>24/7 service bij storingen</li>
+        <li>Service bij storingen: Ma-Do 9-17, Vr 9-16</li>
         <li>Persoonlijk advies op locatie</li>
         <li>Concurrerende prijzen</li>
       </ul>

@@ -9,8 +9,8 @@ import { generateOrganizationSchema } from "@/lib/schema"
 import Script from "next/script"
 
 export const metadata: Metadata = {
-  title: "Airco Merken | Airco Offerte Limburg",
-  description: "Ontdek ons uitgebreide assortiment aan hoogwaardige airconditioning merken. Van Daikin tot Mitsubishi, wij bieden alleen de beste kwaliteit.",
+  title: "Airco Merken | Daikin, LG, Samsung | StayCool ✓",
+  description: "✓ Alle topmerken ✓ 5 jaar garantie ✓ Beste prijs-kwaliteit ✓ Daikin, Mitsubishi, Samsung, LG, Tosot. Advies? 046-202-1430",
   keywords: [
     "airco merken",
     "Daikin",
@@ -47,7 +47,7 @@ export default function BrandsPage() {
         <div className="relative mb-16 overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 p-12 text-white">
           <div className="absolute inset-0 bg-grid-white/[0.2] bg-grid-8"></div>
           <div className="relative z-10">
-            <h1 className="mb-4 text-5xl font-bold">Premium Airco Merken</h1>
+            <h1 className="mb-4 text-5xl font-bold">Daikin Airco Limburg & Meer Topmerken</h1>
             <p className="mb-6 text-xl text-blue-100 max-w-2xl">
               Ontdek ons zorgvuldig geselecteerde assortiment van 's werelds beste airconditioning fabrikanten. 
               Alleen A-merken met bewezen kwaliteit en betrouwbaarheid.

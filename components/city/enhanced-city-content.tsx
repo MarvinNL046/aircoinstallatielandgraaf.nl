@@ -21,6 +21,7 @@ import {
   MessageSquare
 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { ContactForm } from "@/components/contact-form"
 import { SavingsCalculator } from "./savings-calculator"
 import { Breadcrumb } from "@/components/navigation/breadcrumb"
@@ -199,12 +200,15 @@ export function EnhancedCityContent({ city }: CityContentProps) {
             </div>
             
             <h1 className="text-4xl font-bold tracking-tight mb-4">
-              Airco Installatie {city.title}
+              Airco {city.title} - Installateur & Service
             </h1>
             
-            <p className="text-xl text-muted-foreground mb-6">
-              {city.description}
-            </p>
+            <div className="text-xl text-muted-foreground mb-6">
+              <p>{city.description}</p>
+              {city.title.toLowerCase() === 'maastricht' && (
+                <p className="mt-2">Bekijk ook onze <Link href="/kennisbank/airco-installatie-maastricht" className="text-blue-600 hover:underline font-medium">kennisbank over airco's in Maastricht</Link>.</p>
+              )}
+            </div>
 
             {/* Trust indicators */}
             <div className="flex flex-wrap gap-4 mb-6">
@@ -250,7 +254,7 @@ export function EnhancedCityContent({ city }: CityContentProps) {
               </div>
               <div className="border rounded-lg p-4 hover:shadow-md transition-shadow">
                 <h3 className="font-semibold mb-2">Airco Onderhoud</h3>
-                <p className="text-2xl font-bold text-blue-600 mb-2">€9,- p.m.</p>
+                <p className="text-2xl font-bold text-blue-600 mb-2">vanaf €11,- p.m.</p>
                 <ul className="text-sm space-y-1">
                   <li className="flex items-center gap-1">
                     <CheckCircle2 className="h-3 w-3 text-green-500" />
@@ -260,6 +264,10 @@ export function EnhancedCityContent({ city }: CityContentProps) {
                     <CheckCircle2 className="h-3 w-3 text-green-500" />
                     <span>Voorrang bij storing</span>
                   </li>
+                  <li className="flex items-center gap-1">
+                    <CheckCircle2 className="h-3 w-3 text-green-500" />
+                    <span>Los onderhoud: €149,-</span>
+                  </li>
                 </ul>
               </div>
               <div className="border rounded-lg p-4 hover:shadow-md transition-shadow">
@@ -268,11 +276,15 @@ export function EnhancedCityContent({ city }: CityContentProps) {
                 <ul className="text-sm space-y-1">
                   <li className="flex items-center gap-1">
                     <CheckCircle2 className="h-3 w-3 text-green-500" />
-                    <span>Voorrijkosten incl.</span>
+                    <span>Voorrijkosten & diagnose</span>
                   </li>
                   <li className="flex items-center gap-1">
                     <CheckCircle2 className="h-3 w-3 text-green-500" />
-                    <span>Direct geholpen</span>
+                    <span>Snelle service</span>
+                  </li>
+                  <li className="flex items-center gap-1">
+                    <CheckCircle2 className="h-3 w-3 text-green-500" />
+                    <span>Excl. onderdelen</span>
                   </li>
                 </ul>
               </div>
@@ -354,6 +366,102 @@ export function EnhancedCityContent({ city }: CityContentProps) {
               </div>
             </Card>
           )}
+
+          {/* Populaire modellen sectie */}
+          <Card className="p-6">
+            <h2 className="text-2xl font-semibold mb-4">
+              Airco Installatie {city.title} - Populaire Modellen
+            </h2>
+            <p className="text-muted-foreground mb-4">
+              Deze modellen worden veel gekozen door onze klanten in {city.title}:
+            </p>
+            <div className="grid md:grid-cols-3 gap-4 mb-4">
+              {/* Tosot Clivia - altijd populair */}
+              <div className="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="relative h-40 bg-gray-50">
+                  <Image
+                    src="/images/brands/products/724-clivia-wit-vooraanzicht.webp"
+                    alt="Tosot Clivia"
+                    fill
+                    className="object-contain p-4"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-semibold mb-1">Tosot Clivia</h3>
+                  <p className="text-xs text-muted-foreground mb-2">Beste prijs-kwaliteit</p>
+                  <div className="space-y-1 text-xs">
+                    <p>✓ Fluisterstil: 21 dB(A)</p>
+                    <p>✓ A++ energielabel</p>
+                  </div>
+                  <Link href="/offerte">
+                    <Button size="sm" className="w-full mt-3 bg-orange-500 hover:bg-orange-600">
+                      Offerte aanvragen
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              
+              {/* Daikin Comfora */}
+              <div className="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="relative h-40 bg-gray-50">
+                  <Image
+                    src="/images/brands/products/daikin-comfora-left.webp"
+                    alt="Daikin Comfora"
+                    fill
+                    className="object-contain p-4"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-semibold mb-1">Daikin Comfora</h3>
+                  <p className="text-xs text-muted-foreground mb-2">Japanse topkwaliteit</p>
+                  <div className="space-y-1 text-xs">
+                    <p>✓ Fluisterstil: 19 dB(A)</p>
+                    <p>✓ A+++ energielabel</p>
+                  </div>
+                  <Link href="/offerte">
+                    <Button size="sm" variant="outline" className="w-full mt-3">
+                      Meer info
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              
+              {/* Samsung WindFree */}
+              <div className="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="relative h-40 bg-gray-50">
+                  <Image
+                    src="/images/brands/products/samsung/windfreeElite/WindFree Elite_S2_Front_Web_RGB.webp"
+                    alt="Samsung WindFree"
+                    fill
+                    className="object-contain p-4"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-semibold mb-1">Samsung WindFree</h3>
+                  <p className="text-xs text-muted-foreground mb-2">Zonder tocht</p>
+                  <div className="space-y-1 text-xs">
+                    <p>✓ WindFree technologie</p>
+                    <p>✓ A+++ energielabel</p>
+                  </div>
+                  <Link href="/offerte">
+                    <Button size="sm" variant="outline" className="w-full mt-3">
+                      Meer info
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="bg-blue-50 rounded-lg p-4">
+              <p className="text-sm text-blue-900">
+                <strong>Tip:</strong> Niet zeker welk model het beste past? Onze adviseurs helpen u graag met een persoonlijk advies voor uw situatie in {city.title}.
+              </p>
+            </div>
+            <div className="mt-4 text-center">
+              <Link href="/offerte" className="text-blue-600 hover:underline text-sm font-medium">
+                Vraag direct een offerte aan voor deze modellen →
+              </Link>
+            </div>
+          </Card>
 
           {/* Merken sectie */}
           <Card className="p-6">

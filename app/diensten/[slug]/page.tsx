@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   // Urgentie en call-to-action toevoegen
   const urgencyPhrases: Record<string, string> = {
-    'installatie': '⚡ 24u Installatie',
+    'installatie': '⚡ Snelle Installatie',
     'onderhoud': '🔧 Voorjaarskorting',
     'reparatie': '⏰ Spoed Service',
     'advies': '✓ Gratis Advies'
@@ -39,8 +39,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const urgency = urgencyPhrases[dienst.slug] || '✓ Direct Beschikbaar'
 
   return {
-    title: `${dienst.title} ${priceDisplay} → ${urgency} Landgraaf | Bel: 046 202 1430`,
-    description: `⭐ ${dienst.title} vanaf ${priceDisplay} in Landgraaf! ✓ 4.8★ uit 127 reviews ✓ Binnen 24u geholpen ✓ 5 jaar garantie ✓ Gecertificeerd. WhatsApp: 06-3648-1054`,
+    title: `${dienst.title} ${priceDisplay} ⚡ StayCool | ${urgency}`,
+    description: `⭐ 127 reviews (4.8★) ✓ ${priceDisplay} ✓ Morgen klaar ✓ 5 jaar garantie. Bel: 046-202-1430`,
     openGraph: {
       title: `${dienst.title} vanaf ${priceDisplay} → StayCool Airco Landgraaf`,
       description: `⚡ ${dienst.description} ✓ Vanaf ${priceDisplay} ✓ 127+ tevreden klanten ✓ Direct contact: 046 202 1430`,

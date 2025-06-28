@@ -29,7 +29,7 @@ export default function DienstenPage() {
     <div className="container mx-auto px-4 py-8">
       <Breadcrumb items={breadcrumbItems} />
       
-      <h1 className="text-4xl font-bold mb-8">Onze Diensten</h1>
+      <h1 className="text-4xl font-bold mb-8">Airco Service Limburg - Installatie, Onderhoud & Reparatie</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
         {diensten.map((dienst) => {
@@ -45,7 +45,12 @@ export default function DienstenPage() {
                 <p className="text-gray-600 mb-4">{dienst.description}</p>
                 <div className="mt-auto">
                   <p className="text-lg font-semibold text-blue-600">
-                    Vanaf €{dienst.price.from},-
+                    {dienst.slug === 'onderhoud' 
+                      ? `Vanaf €${dienst.price.from},- per maand`
+                      : dienst.slug === 'reparatie'
+                      ? `€${dienst.price.from},- voorrijkosten & diagnose`
+                      : `Vanaf €${dienst.price.from},-`
+                    }
                   </p>
                 </div>
               </Card>

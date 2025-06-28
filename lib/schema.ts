@@ -118,8 +118,8 @@ export function generateFAQSchema(faqs: { question: string; answer: string }[]):
 export function generateAggregateRatingSchema(): AggregateRating {
   return {
     "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: 127,
+    ratingValue: "4.7",
+    reviewCount: 163,
     bestRating: "5",
     worstRating: "1"
   }
@@ -179,7 +179,8 @@ export function generateEnhancedOrganizationSchema(): WithContext<Organization> 
           validThrough: new Date(Date.now() + 30*24*60*60*1000).toISOString(),
           seller: {
             "@type": "Organization",
-            name: "StayCool Airco Landgraaf"
+            name: "StayCool Airco Landgraaf",
+            "@id": "https://aircoinstallatielandgraaf.nl"
           }
         }
       ]
@@ -211,7 +212,8 @@ export function generateProductSchema(product: {
       availability: "https://schema.org/InStock",
       seller: {
         "@type": "Organization",
-        name: "StayCool Airco Landgraaf"
+        name: "StayCool Airco Landgraaf",
+        "@id": "https://aircoinstallatielandgraaf.nl"
       },
       priceValidUntil: new Date(Date.now() + 30*24*60*60*1000).toISOString()
     },

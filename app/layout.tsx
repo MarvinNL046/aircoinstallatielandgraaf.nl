@@ -1,30 +1,24 @@
-import { Inter, Poppins } from "next/font/google"
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
+import { Inter } from "next/font/google"
 import { Toaster } from "@/components/ui/sonner"
 import { ThemeProvider } from "@/components/theme-provider"
+import { NavbarOptimized } from "@/components/layout/navbar-optimized"
+import { FooterOptimized } from "@/components/layout/footer-optimized"
 import "./globals.css"
-
-const poppins = Poppins({ 
-  subsets: ["latin"],
-  display: 'swap',
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
-})
 
 const inter = Inter({ 
   subsets: ["latin"],
   display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-inter',
 })
 
 export const metadata = {
   metadataBase: new URL('https://aircoinstallatielandgraaf.nl'),
   title: {
-    default: 'Airco Installatie Landgraaf | StayCool Airco | Gratis Offerte Binnen 24 Uur ✓',
-    template: '%s | StayCool Airco Landgraaf'
+    default: 'Airco Landgraaf €1299 | Direct Contact | StayCool ⚡',
+    template: '%s | StayCool Airco'
   },
-  description: 'Dé airco specialist in Landgraaf! ✓ Professionele installatie door StayCool Airco ✓ Erkend installateur ✓ Alle topmerken ✓ Binnen 24 uur reactie ✓ Beste prijs-kwaliteit ✓ 5 jaar garantie. Bel nu: 046 202 1430',
+  description: '✓ 163+ reviews (4.7★) ✓ Morgen geïnstalleerd ✓ 5 jaar garantie ✓ Erkend installateur Limburg. Bel: 046-202-1430',
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -36,59 +30,57 @@ export const metadata = {
     ],
   },
   keywords: [
-    // Primaire zoektermen
-    'airco installatie landgraaf',
-    'airco specialist landgraaf',
-    'airco monteur landgraaf',
-    'airco bedrijf landgraaf',
-    'airconditioning landgraaf',
+    // Hoofdzoektermen
+    'airco limburg',
+    'airco service limburg',
+    'aircoservice limburg',
+    'airco specialist limburg',
+    'klimaatbeheersing limburg',
     
-    // Installatie en service
-    'professionele airco installatie',
-    'airco installatie kosten',
-    'split airco installatie',
-    'multisplit airco landgraaf',
-    'airco onderhoud landgraaf',
-    'airco storing oplossen',
-    'snelle airco service',
+    // Steden specifiek
+    'airco landgraaf',
+    'airco heerlen',
+    'split airco brunssum',
+    'airco geleen',
+    'airco sittard',
+    'airconditioning kerkrade',
+    'airco kerkrade',
+    'airco voerendaal',
+    'airco zuid limburg',
+    'airco hoensbroek',
+    'airco parkstad',
+    'airco roermond',
+    'airco maastricht',
     
-    // Producten en systemen
-    'energiezuinige airco',
-    'split airco systemen',
-    'multi-split airconditioning',
-    'stille airco installatie',
-    'airco met verwarming',
+    // Service en installatie
+    'airco plaatsen limburg',
+    'airco kopen limburg',
+    'airco service geleen',
+    'aircospecialist limburg',
+    'airco limburg aanbieding',
+    'airco direct geleen',
+    'airco bedrijf limburg',
+    'airco kopen en laten installeren limburg',
+    'airco installateur limburg',
+    'airco installatie limburg',
+    'airco bedrijven limburg',
+    'airco onderhoud limburg',
+    'airco montage limburg',
+    'airco service sittard',
+    'airco service voerendaal',
+    'airco service achterhoek',
     
-    // Doelgroep specifiek
-    'airco voor woning',
-    'airco voor bedrijf',
-    'airco voor slaapkamer',
-    'beste airco voor thuis',
+    // Merken
+    'mitsubishi airco limburg',
+    'daikin airco limburg',
+    'airco kopen en laten installeren mitsubishi',
+    'profi airco',
     
-    // Commercieel
-    'airco kopen landgraaf',
-    'airco landgraaf prijzen',
-    'airco prijsvergelijking',
-    'airco financiering',
-    'goedkope airco installatie',
-    
-    // Expertise en advies
-    'airco showroom landgraaf',
-    'airco advies op maat',
-    'gecertificeerde airco monteurs',
-    'airco merken',
-    'premium airco merken',
-    
-    // Conversie gericht
-    'airco offerte aanvragen',
-    'airco laten plaatsen',
-    'airco installatie advies',
-    
-    // Seizoensgebonden
-    'airco voor zomer en winter',
-    'klimaatbeheersing',
-    'duurzame koeling',
-    'warmtepomp'
+    // Algemeen
+    'air conditioning near me',
+    'air conditioning installation near me',
+    'airconditioning sittard',
+    'airco zuid'
   ],
   authors: [{ name: 'StayCool Airco' }],
   creator: 'StayCool Airco',
@@ -103,8 +95,8 @@ export const metadata = {
     locale: 'nl_NL',
     url: '/',
     siteName: 'StayCool Airco Landgraaf',
-    title: 'Airco Installatie Landgraaf | StayCool Airco | Gratis Offerte Binnen 24 Uur ✓',
-    description: 'Dé airco specialist in Landgraaf! ✓ Professionele installatie door StayCool Airco ✓ Erkend installateur ✓ Alle topmerken ✓ Binnen 24 uur reactie ✓ Beste prijs-kwaliteit',
+    title: 'Airco Installatie Landgraaf & Limburg | StayCool Airco | 5 Jaar Garantie',
+    description: 'Professionele airco installatie in Landgraaf en heel Limburg. ✓ Gecertificeerde monteurs ✓ Alle topmerken ✓ Binnen 24u reactie ✓ 4.7/5 reviews ✓ Vanaf €11/maand',
     images: [
       {
         url: '/opengraph-image',
@@ -116,8 +108,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Airco Installatie Landgraaf | StayCool Airco | Gratis Offerte Binnen 24 Uur ✓',
-    description: 'Dé airco specialist in Landgraaf! ✓ Professionele installatie door StayCool Airco ✓ Erkend installateur ✓ Alle topmerken ✓ Binnen 24 uur reactie',
+    title: 'Airco Installatie Landgraaf & Limburg | StayCool Airco | 5 Jaar Garantie',
+    description: 'Professionele airco installatie in Landgraaf en heel Limburg. ✓ Gecertificeerde monteurs ✓ Alle topmerken ✓ Binnen 24u reactie ✓ 4.7/5 reviews',
     images: ['/opengraph-image'],
     creator: '@staycoolairco',
     site: '@staycoolairco'
@@ -156,7 +148,7 @@ export default function RootLayout({
     >
       <head />
       <body 
-        className={`${poppins.variable} ${inter.variable} font-sans min-h-screen flex flex-col`}
+        className={`${inter.variable} font-sans min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -166,9 +158,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex min-h-screen flex-col">
-            <Header />
-            <main id="main-content">{children}</main>
-            <Footer />
+            <NavbarOptimized />
+            <main className="flex-1" id="main-content">
+              {children}
+            </main>
+            <FooterOptimized />
           </div>
           <Toaster position="top-center" />
         </ThemeProvider>
