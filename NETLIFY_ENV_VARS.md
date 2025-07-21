@@ -12,6 +12,14 @@ NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_rkcpzhg
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=sjJ8kK6U9wFjY0zX9
 ```
 
+## GoHighLevel Webhook Configuratie
+
+Deze variabele is nodig voor het versturen van leads naar GoHighLevel CRM:
+
+```
+NEXT_PUBLIC_GHL_WEBHOOK_URL=https://services.leadconnectorhq.com/hooks/k90zUH3RgEQLfj7Yc55b/webhook-trigger/54670718-ea44-43a1-a81a-680ab3d5f67f
+```
+
 ## Hoe toe te voegen in Netlify:
 
 1. Log in op je Netlify account

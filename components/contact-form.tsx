@@ -6,18 +6,22 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "sonner"
 import { Loader2 } from "lucide-react"
-import { sendEmail } from "@/lib/emailjs"
+import { sendEmail } from "@/lib/email"
+import { useRouter } from "next/navigation"
+import { trackFormSubmission, trackPixelFormSubmission } from "@/lib/analytics"
 
 interface ContactFormProps {
   cityName?: string
 }
 
 export function ContactForm({ cityName }: ContactFormProps) {
+  const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    city: cityName || "",
     message: cityName 
       ? `Ik wil graag een offerte aanvragen voor een airco in ${cityName}.`
       : "",
@@ -29,17 +33,29 @@ export function ContactForm({ cityName }: ContactFormProps) {
 
     try {
       await sendEmail(formData)
+      
+      trackFormSubmission('contact_form', true)
+      trackPixelFormSubmission('contact_form', true)
+      
       toast.success("Uw aanvraag is succesvol verzonden!")
       setFormData({
         name: "",
         email: "",
         phone: "",
+        city: cityName || "",
         message: cityName 
           ? `Ik wil graag een offerte aanvragen voor een airco in ${cityName}.`
           : "",
       })
+      
+      setTimeout(() => {
+        router.push('/tot-snel')
+      }, 1000)
     } catch (error) {
       toast.error("Er ging iets mis. Probeer het later opnieuw.")
+      
+      trackFormSubmission('contact_form', false)
+      trackPixelFormSubmission('contact_form', false)
     } finally {
       setIsSubmitting(false)
     }
