@@ -96,6 +96,12 @@ export function HeroOptimizedV2() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
+              <Link href="https://afspraken.staycoolairco.nl/" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all">
+                  Direct Afspraak Maken
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
               <Link href="tel:0462021430">
                 <Button size="lg" variant="outline" className="border-2 border-gray-300 hover:border-orange-500 px-6 py-3 text-lg">
                   <Phone className="mr-2 h-5 w-5" />

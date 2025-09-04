@@ -91,6 +91,11 @@ export function Header() {
                     {item.name}
                   </Link>
                 ))}
+                <Link href="https://afspraken.staycoolairco.nl/" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 mb-2">
+                    Online Afspraak Maken
+                  </Button>
+                </Link>
                 <Link href="/offerte" onClick={() => setIsOpen(false)}>
                   <Button className="w-full bg-green-600 hover:bg-green-700">
                     Offerte Aanvragen
@@ -102,7 +107,16 @@ export function Header() {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-3">
+          <Link href="https://afspraken.staycoolairco.nl/" target="_blank" rel="noopener noreferrer">
+            <Button 
+              variant="outline"
+              className="border-blue-600 text-blue-600 hover:bg-blue-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              aria-label="Maak een afspraak online"
+            >
+              Online Afspraak
+            </Button>
+          </Link>
           <Link href="/offerte">
             <Button 
               className="bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"

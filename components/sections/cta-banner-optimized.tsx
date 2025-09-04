@@ -92,12 +92,22 @@ export function CTABannerOptimized({ variant = "default", className = "" }: CTAB
                     </Link>
                   </>
                 ) : (
-                  <Link href="/offerte">
-                    <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 shadow-lg">
-                      {config.buttonText}
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
+                  <>
+                    <Link href="/offerte">
+                      <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 shadow-lg">
+                        {config.buttonText}
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Button>
+                    </Link>
+                    {variant === "urgent" && (
+                      <Link href="https://afspraken.staycoolairco.nl/" target="_blank" rel="noopener noreferrer">
+                        <Button size="lg" variant="outline" className="text-white border-white/50 hover:bg-white/10">
+                          Direct Online Afspraak
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                      </Link>
+                    )}
+                  </>
                 )}
               </div>
             </div>
