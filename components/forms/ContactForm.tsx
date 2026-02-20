@@ -45,9 +45,10 @@ export default function ContactForm() {
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', city: '', message: '' });
       
+      // Redirect to thank you page
       setTimeout(() => {
-        router.push('/tot-snel');
-      }, 1000);
+        window.location.href = 'https://staycoolairco.nl/tot-snel';
+      }, 1500);
     } catch (error) {
       console.error('Error:', error);
       setStatus('error');
