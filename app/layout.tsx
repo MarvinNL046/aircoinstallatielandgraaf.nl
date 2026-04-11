@@ -146,7 +146,19 @@ export default function RootLayout({
       suppressHydrationWarning
       className="scroll-smooth antialiased"
     >
-      <head />
+      <head >
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF6X0TVQSK" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-WF6X0TVQSK');
+            `,
+          }}
+        />
+      </head>
       <body 
         className={`${inter.variable} font-sans min-h-screen flex flex-col`}
         suppressHydrationWarning
